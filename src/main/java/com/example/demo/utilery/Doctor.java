@@ -22,10 +22,18 @@ public class Doctor {
 
 	public Doctor() {}
 	
-	public Doctor(int idDoctor, String nombre) {
+	public Doctor(int idDoctor, String nombre, String nombreUsuario, String contra, String especialidad, String cedula,
+			Date birthDate, List<Cita> citas) {
 		this.idDoctor = idDoctor;
 		this.nombre = nombre;
+		this.nombreUsuario = nombreUsuario;
+		this.contra = contra;
+		this.especialidad = especialidad;
+		this.cedula = cedula;
+		this.birthDate = birthDate;
+		this.citas = citas;
 	}
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +41,18 @@ public class Doctor {
 	
 	@Column
 	public String nombre;
+	
+	@Column
+	public String nombreUsuario;
+	
+	@Column
+	public String contra;
+	
+	@Column
+	public String especialidad;
+	
+	@Column
+	public String cedula;
 	
 	@Column
 	public Date birthDate;
@@ -72,6 +92,38 @@ public class Doctor {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+	
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getContra() {
+		return contra;
+	}
+
+	public void setContra(String contra) {
+		this.contra = contra;
+	}
+
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
 /*
 	private String generateId() {

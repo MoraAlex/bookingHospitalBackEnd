@@ -15,15 +15,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Paciente {
-	
+
 	public Paciente() {}
 	
-	public Paciente(int idPaciente, String nombre, int edad, boolean sexo) {
+	public Paciente(int idPaciente, String nombre, String password, int edad, boolean sexo, String nombreUsuario,
+			List<Cita> citas) {
+		super();
 		this.idPaciente = idPaciente;
 		this.nombre = nombre;
+		this.password = password;
 		this.edad = edad;
 		this.sexo = sexo;
-	}
+		this.nombreUsuario = nombreUsuario;
+		this.citas = citas;
+	}	
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +39,16 @@ public class Paciente {
 	private String nombre;
 	
 	@Column
+	private String password;
+	
+	@Column
 	private int edad;
 	
 	@Column
 	private boolean sexo;
+	
+	@Column
+	private String nombreUsuario;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idCita")
@@ -73,6 +85,29 @@ public class Paciente {
 
 	public void setSexo(boolean sexo) {
 		this.sexo = sexo;
+	}
+	
+	public List<Cita> getCitas() {
+		return citas;
+	}
+
+	public void setCitas(List<Cita> citas) {
+		this.citas = citas;
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 }
